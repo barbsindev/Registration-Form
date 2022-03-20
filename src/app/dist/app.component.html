@@ -1,0 +1,118 @@
+<div class="container">
+  <h1>Covid 19 Registration Form</h1>
+  <p [ngClass]="submitted ? 'show' : 'hide'">
+    Your registration has been successful!
+  </p>
+
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field appearance="fill" class="form__name">
+      <input
+        matInput
+        type="text"
+        id="firstname"
+        placeholder="First Name"
+        formControlName="firstname"
+        required
+      />
+    </mat-form-field>
+    <mat-error *ngIf="f['firstname'].touched && f['firstname'].invalid">
+      <mat-error
+        *ngIf="f['firstname'].errors && f['firstname'].errors['required']"
+      >
+        Field Required
+      </mat-error>
+      <mat-error *ngIf="f['firstname']; errors: ['pattern']">
+        Invalid Entry
+      </mat-error>
+    </mat-error>
+
+    <mat-form-field appearance="fill" class="form__surname">
+      <input
+        matInput
+        placeholder="Surname"
+        type="text"
+        id="surname"
+        formControlName="surname"
+        required
+      />
+    </mat-form-field>
+    <mat-error *ngIf="f['surname'].touched && f['surname'].invalid">
+      <mat-error *ngIf="f['surname'].errors && f['surname'].errors['required']">
+        Field Required
+      </mat-error>
+      <mat-error *ngIf="f['surname']; errors: ['pattern']">
+        Invalid Entry
+      </mat-error>
+    </mat-error>
+
+    <mat-form-field appearance="fill" class="form__bday">
+      <input
+        placeholder="Date of Birth"
+        matInput
+        type="date"
+        formControlName="birthday"
+      />
+    </mat-form-field>
+    <mat-error
+      *ngIf="f['birthday'].touched && f['birthday'].invalid"
+      class="alert alert-danger"
+    >
+      <mat-error
+        *ngIf="f['birthday'].errors && f['birthday'].errors['required']"
+      >
+        Field Required
+      </mat-error>
+    </mat-error>
+
+    <mat-form-field appearance="fill" class="form__email">
+      <input
+        matInput
+        placeholder="Email"
+        type="email"
+        id="email"
+        formControlName="email"
+      />
+    </mat-form-field>
+
+    <mat-error *ngIf="f['email'].touched && f['email'].invalid">
+      <mat-error *ngIf="f['email'].errors && f['email'].errors['email']"
+        >Please, enter valid email address.</mat-error
+      >
+    </mat-error>
+
+    <mat-form-field appearance="fill" class="form__number">
+      <input
+        matInput
+        placeholder="Phone Number"
+        type="tel"
+        id="phone"
+        name="phone"
+        formControlName="phonenumber"
+        required
+      />
+    </mat-form-field>
+    <mat-error
+      *ngIf="f['phonenumber'].touched && f['phonenumber'].invalid"
+      class="alert alert-danger"
+    >
+      <mat-error *ngIf="phonenumber?.errors?.['required']"
+        >Field Required</mat-error
+      >
+      <mat-error
+        *ngIf="phonenumber?.errors?.['pattern'] || phonenumber?.errors?.['maxlength'] || phonenumber?.errors?.['minlength']"
+      >
+        Must be at least 10 numbers
+      </mat-error>
+    </mat-error>
+
+    <button
+      class="form__btn"
+      type="submit"
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="accent"
+    >
+      Submit
+    </button>
+  </form>
+</div>

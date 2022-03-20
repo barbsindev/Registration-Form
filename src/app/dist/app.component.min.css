@@ -1,0 +1,2 @@
+.container{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}.container .form{display:grid;grid-template-columns:1fr;width:100%;max-width:450px}.container p.hide{display:none}.container p.show{display:block;background:green;color:#fff;padding:10px}
+/*# sourceMappingURL=app.component.min.css.map */
